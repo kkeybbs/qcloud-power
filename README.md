@@ -95,10 +95,10 @@ Google DocsµÄ±íµ¥¹¦ÄÜºÜ°ô£¬Ö§³ÖºÜ¶àÖÖÀàÐÍ£ºÎÄ±¾¿ò¡¢µ¥Ñ¡¡¢¶àÑ¡¡¢ÏÂÀ­¿ò¡¢Íø¸ñ£¬·ÖÒ
 
 **Ç°¶Ë**£º´ÓGoogle±íµ¥·ÖÀëÁËÇ°¶Ëjs´úÂë£¬ÂÔ×÷µ÷Õû
 **ºóÌ¨**£ºphpÀ´ÊÕ¼¯±íµ¥ÔªËØµÄjson£¬´æ´¢£»×é×°ÎÊ¾íÒ³Ãæ£»ÎÊ¾í»Ø´ðµÄ´æ´¢ºÍÏÂÔØ
-
+![´´½¨±íµ¥](raw/master/images/eform1.png)
+![´´½¨±íµ¥](raw/master/images/eform2.png)
 
 
 ## 3.¶þÎ¬Âë¹¤¾ß
 ## 4.µØÍ¼ËÑË÷
 ## 5.XCode dmg / docsetÏÂÔØµØÖ·»ñÈ¡
-
