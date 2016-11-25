@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>二维码工具</title>
+<script type="text/javascript" src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="llqrcode.js"></script>
+<script type="text/javascript" src="jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<style type="text/css">
+.hr {
+    height: 1px;
+    display: block;
+    background-color: gray;
+    margin-top: 15px;
+}
+.qrfile {
+    width: 200px;
+    height: 200px;
+    background-color: #eed;
+    display: block;
+}
+.hidden {
+    display: none;
+}
+#qr-canvas, #qr-video {
+    width: 128px;
+    height: 128px;
+}
+span {
+    color: red
+}
+</style>
+</head>
+<body>
+<div id="qrcode" class="hidden"></div>
+<img id="qr_img"/>
+<div class="hidden">
+  <div>
+    <h3>生成二维码</h3>
+    <form method="GET" action="">
+      <textarea name="t" rows="5" cols="80">http://www.baidu.com</textarea><br/>
+      <select name="width">
+        <option>256</option>
+        <option>128</option>
+        <option>64</option>
+      </select>
+      <input type="submit" value="生成">
+    </form>
+    <button id="get-dwz">获取短网址</button>
+  </div>
+  <div class="hr"></div>
+  <div>
+    <h3>解析二维码</h3>
+    <span id="qrtext"></span>
+    <div class="qrfile">
+      拖拽二维码到这里
+      <br><br>
+      或<br>
+      <form>
+        <input type="file"/>
+      </form>
+      <br><br>
+      或<br>
+      <div>
+        <button id="start-scan">扫描二维码</button>
+        <br/>
+        <video id="qr-video" autoplay></video>
+        <canvas id="qr-canvas" class="hidden"></canvas>
+      </div>
+    </div>    
+  </div>
+</div>
+</body>
+</html>

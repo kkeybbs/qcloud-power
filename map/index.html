@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>MapsEx - TinyApp</title>
+<style type="text/css">
+#container {
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    margin:0;
+    font-family:"微软雅黑";
+}
+#findResult {
+    color: red
+}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=pV8ycoWGVcKEjawDLkScOKl53oaL3S2C"></script>
+<script>
+function onload() {
+    var city = '深圳';
+    var geocoder = new BMap.Geocoder();
+    var geolocation = new BMap.Geolocation();
+    var map = new BMap.Map('container');
+    
+    var center = false;
+    var circle = false;
+    var $ = function(id) { return document.getElementById(id);}
+    function update_center(point) {
+        var findCenter = $('findCenter');
+        if(point) {
+            if(!center) {
+                center = new BMap.Marker(point);
+                var icon_url = 'http://0.web.qstatic.com/webqqpic/pubapps/0/50/images/small.png';
+                var icon = new BMap.Icon(icon_url, new BMap.Icon(16, 16));
+                center.setIcon(icon);
+                map.addOverlay(center)
+            }
+            console.info('findCenter: ', point);
+            map.centerAndZoom(point, 12);
+            center.setPosition(point)
+            center.setTitle(findCenter.value);
+        }
+        var findCircle = $('findCircle');
+        var km = findCircle.value;
+        km = parseInt(km) * 1000;
+        if(isNaN(km)) {
+            findCircle.style.color = 'red';
+            return;
+        }
+        findCircle.style.color = 'black';
+        if(!circle) {
+            circle = new BMap.Circle(center.getPosition(), km);
+            //circle.setStrokeOpacity(0.7);
+            //circle.setStrokeColor('red');
+            //circle.setFillOpacity(0.7);
+            //circle.setFillColor('red');
+            map.addOverlay(circle)
+        }
+        circle.setRadius(km);
+        circle.setCenter(center.getPosition());
+    }
+
+    $('findCenter').onkeyup = function() {
+        var input = this;
+        console.info('findCenter: ', input.value);
+        geocoder.getPoint(input.value, function(point) {
+            if(point != null) {
+                update_center(point);
+                input.style.color = 'black';
+            } else {
+                input.style.color = 'red';
+            }
+        }, city);
+    };
+
+    $('findCircle').onkeyup = function() {
+        update_center(false);
+    };
+
+    var places = {};
+    var errors = [];
+    function search(keyword) {
+        console.info('keyword: ', keyword);
+        if(places[keyword]) {
+            return;
+        }
+        places[keyword] = 1;
+        geocoder.getPoint(keyword, function(point) {
+            console.info('keyword: ', keyword, point);
+            if(point != null) {
+                var mark = new BMap.Marker(point);
+                mark.setTitle(keyword);
+                places[keyword] = mark;
+                map.addOverlay(mark);
+            } else {
+                var html = '<a href="http://api.map.baidu.com/geocoder?address=#keyword#&output=html" target="_blank">#keyword#</a>';
+                html = html.replace(/#keyword#/g, keyword)
+                errors.push(html);
+                $('findResult').innerHTML = errors.join(' ');
+            }
+        }, city);
+    }
+    $('findPlaces').onkeyup = function() {
+        var keywords = this.value.trim().split(/[\s\n]/);
+        errors = [];
+        $('findResult').innerHTML = '';
+        var old_keywords = Object.keys(places);
+        for (var i = 0; i < keywords.length; i++) {
+            var keyword = keywords[i].trim();
+            var pos = old_keywords.indexOf(keyword);
+            if(pos != -1) {
+                delete old_keywords[pos];
+            }
+            search(keyword);
+        }
+        for(var i in old_keywords) {
+            map.removeOverlay(places[old_keywords[i]]);
+            delete places[old_keywords[i]];
+        }
+    };
+
+    function init_map() {
+        geocoder.getPoint(city, function(point) {
+            console.info('point:', point);
+            map.centerAndZoom(point, 11);
+            map.addControl(new BMap.MapTypeControl());
+            map.addControl(new BMap.NavigationControl());
+            map.addControl(new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
+            //map.addControl(new BMap.OverviewMapControl({isOpen:true}));
+
+            map.setCurrentCity(city);
+            map.enableScrollWheelZoom(true);
+            map.addEventListener('click', function(e) {
+                geocoder.getLocation(e.point, function(r) {
+                    $('findCenter').value = r.address;
+                    update_center(e.point);
+                });
+            });
+            $('findCenter').onkeyup();
+            $('findPlaces').onkeyup();
+        }, city);  
+    }
+
+    geolocation.getCurrentPosition(function(r) {
+        if(r) {
+            console.info('city: ', r.address.city);
+            city = r.address.city;
+        }
+        init_map();
+    });
+}
+
+</script>
+</head>
+<body onload="onload()">
+<input type="text" id="findCenter" size="45" value="世界之窗" /> 附近
+<input type="text" id="findCircle" size="5" value="20"/> km 范围找：<br/>
+<textarea id="findPlaces" rows="5" cols="61">南油大厦 中国有色大厦 莲花山</textarea><br/>
+<span id="findResult"></span>
+<br/>
+<div id="container"></div>
+</body>
+</html>
