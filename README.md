@@ -135,8 +135,11 @@ Google Docs的表单功能很棒，支持很多种类型：文本框、单选、
 
 ### 看看效果
 创建表单
+
 ![创建表单](images/eform1.png)
+
 填写表单
+
 ![填写表单](images/eform2.png)
 
 ### 可以改进的地方
@@ -223,6 +226,7 @@ reader.readAsDataURL(file);
 ### 效果
 > * **手机、PC都可用** http://t.ydjiao.com/qr
 > * 二维码生成、解析、扫描
+
 ![二维码生成、解析、扫描](images/qr.png)
 
 ## 4.地图搜索
