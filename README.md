@@ -28,7 +28,7 @@
 我的云端工具集都是基于后端php、前端h5实现。php可以和apache或nginx配套使用。
 > 配置好的同学可以跳过
 > 网络上资料很多，也可以根据自己的系统、喜欢的方式来配置、搭建环境
-》 例如CentOS参考这里：http://blog.sina.com.cn/s/blog_505bf9af010137gf.html
+> 例如CentOS参考这里：http://blog.sina.com.cn/s/blog_505bf9af010137gf.html
 
 apache2+php+mysql安装非常简单：
 ```
@@ -111,6 +111,7 @@ Google Docs的表单功能很棒，支持很多种类型：文本框、单选、
 
 ### 实现思路
 > * step1：前端使用js，添加各类表单元素元素，记录对应数据。其中EntryType表示是文本、单选、网格等类型，Choices字段记录对应选项。
+
 ```
     {
       "EntryId": 3,
@@ -167,6 +168,7 @@ Google Docs的表单功能很棒，支持很多种类型：文本框、单选、
 ### 生成二维码
 html5中，调用这个js即可
 > http://jeromeetienne.github.io/jquery-qrcode/
+
 ```
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://jeromeetienne.github.io/jquery-qrcode/src/jquery.qrcode.js"></script>
@@ -244,8 +246,10 @@ reader.readAsDataURL(file);
 ### 背景
 > * 知道公司班车几条线路所有停靠站点，先看看家附近哪里可以乘坐
 > * 最好能在地图直观看到 家、所有站点位置
+
 ### 思路
 > * 调用百度地图api，把所有地址转换成经纬度，在地图上标记出来
+
 ### 实现
 这个比较简单，做下用户输入的查询的解析，发请求给百度地图api
 但是确实做了些交互体验的东西，输入立刻查询、已查询地点缓存等
@@ -282,6 +286,7 @@ geocoder.getPoint(city, function(point) {
 跑起XCode，抓包看看，发现访问了https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex
 打开看看，大礼包都在
 > 这个文件是apple加的CFProperty，找了个php版本的解析工具CFPropertyList
+
 ```
 $url = 'https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex';
 $xml = file_get_contents($url);
