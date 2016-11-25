@@ -10,7 +10,7 @@
 > * [问卷系统](http://t.ydjiao.com/eform "问卷系统")：借鉴Google表单，支持文本、单选、多选、分页以及问卷的复制、导出
 > * [二维码工具集](http://t.ydjiao.com/qr "二维码工具集")：支持生成二维码、解析/扫描二维码，**微信加群短网址生成**
 > * [地图搜索](http://t.ydjiao.com/map "地图搜索")：按中心搜索周边多个位置
-> * XCode dmg / docset下载地址获取
+> * [XCode dmg / docset下载地址获取](http://t.ydjiao.com/xcode "XCode dmg / docset下载地址获取")
 
 ## 1.环境搭建(php)
 使用了**腾讯云**￥65/月 的 ubuntu 14 x64，经济实惠，适合投入有限的程序猿猿。
