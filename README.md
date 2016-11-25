@@ -22,6 +22,14 @@
 > * [地图搜索](http://t.ydjiao.com/map "地图搜索")：按中心搜索周边多个位置
 > * [XCode dmg / docset下载地址获取](http://t.ydjiao.com/xcode "XCode dmg / docset下载地址获取")
 
+其他用途
+> * 个人博客
+> * 运行[phantomjs](http://phantomjs.org/ "phantomjs")，在服务器上跑浏览器去模拟访问页面、截图、自动化测试
+> * 架设[Charles Proxy](https://www.charlesproxy.com/documentation/installation/apt-repository/ "Charles Proxy")，不用单独开wifi ap，比Fiddler更简单的抓包
+> * 物联时代，和你的智能设备联动起来：[魔豆路由器-云消息](http://bbs.modouwifi.cn/thread-7223-1-1.html "魔豆路由器-云消息")
+> * [抓豆瓣妹子](https://www.v2ex.com/t/141476 "抓豆瓣妹子") 
+
+
 ## 1.环境搭建(php)
 使用了**腾讯云**￥65/月 的 ubuntu 14 x64，经济实惠，适合投入有限的程序猿猿。
 
