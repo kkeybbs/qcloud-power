@@ -1,6 +1,16 @@
 # 激发云力量--打造我的云端工具集
 ------
-[TOC]
+<!-- TOC depthFrom:1 depthTo:2 updateOnSave:true -->
+
+- [激发云力量--打造我的云端工具集](#%E6%BF%80%E5%8F%91%E4%BA%91%E5%8A%9B%E9%87%8F--%E6%89%93%E9%80%A0%E6%88%91%E7%9A%84%E4%BA%91%E7%AB%AF%E5%B7%A5%E5%85%B7%E9%9B%86)
+    - [0.前言](#0%E5%89%8D%E8%A8%80)
+    - [1.环境搭建(php)](#1%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BAphp)
+    - [2.问卷系统](#2%E9%97%AE%E5%8D%B7%E7%B3%BB%E7%BB%9F)
+    - [3.二维码工具](#3%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%B7%A5%E5%85%B7)
+    - [4.地图搜索](#4%E5%9C%B0%E5%9B%BE%E6%90%9C%E7%B4%A2)
+    - [5.XCode dmg / docset下载地址获取](#5xcode-dmg--docset%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%E8%8E%B7%E5%8F%96)
+
+<!-- /TOC -->
 ## 0.前言
 > 日常工作中，有很多小需求，作为码农，总喜欢自己动手做点小东西出来，也成为学习与实践的好机会。
 在使用**腾讯云**过程中，从环境搭建、各个小需求的构思，前后端技术的琢磨、学习、使用，收获很大。
@@ -238,6 +248,7 @@ reader.readAsDataURL(file);
 ### 实现
 这个比较简单，做下用户输入的查询的解析，发请求给百度地图api
 但是确实做了些交互体验的东西，输入立刻查询、已查询地点缓存等
+
 ```
 var city = '深圳';
 var geocoder = new BMap.Geocoder();
@@ -254,6 +265,7 @@ geocoder.getPoint(city, function(point) {
   // 更多代码可以直接打开http://t.ydjiao.com/map，右击，查看网页源代码
 });
 ```
+
 ![按中心搜索周边多个位置](images/map.png)
 
 ## 5.XCode dmg / docset下载地址获取
