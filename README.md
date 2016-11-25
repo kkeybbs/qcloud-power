@@ -32,7 +32,8 @@
 
 ## 1.环境搭建(php)
 使用了**腾讯云**￥65/月 的 ubuntu 14 x64，经济实惠，适合投入有限的程序猿猿。
-![腾讯云](images/qcloud_logo)
+
+![腾讯云](images/qcloud_logo.png)
 
 我的云端工具集都是基于后端php、前端h5实现。php可以和apache或nginx配套使用。
 > 配置好的同学可以跳过
