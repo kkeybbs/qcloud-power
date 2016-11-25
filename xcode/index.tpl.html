@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>xcode docset</title>
+<style type="text/css">
+table.container {
+    width: 640px;
+    margin-top: 30px;
+}
+table.item {
+	border: 1px solid blue;
+	width: 100%;
+	border-collapse:collapse;
+    margin-top: 30px;
+}
+td {
+	vertical-align:top;
+	height:30px;
+}
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
+</style>
+<script>
+function filter(value) {
+    var tables = document.querySelectorAll('table.item');
+    if(value.length == 0) {
+        for (var i = 0; i < tables.length; i++) {
+            if(tables[i].style.display == 'none') {
+                tables[i].style.display = 'block';
+            }
+        }
+        return;
+    }
+    var keywords = value.toLowerCase().split(' ');
+    for (var i = 0; i < keywords.length; i++) {
+        keywords[i] = keywords[i].trim();
+    }
+    for (var i = 0; i < tables.length; i++) {
+        var text = tables[i].querySelector('strong').innerText.toLowerCase();
+        var display = 'none';
+        for(var k = 0; k < keywords.length; k++) {
+            if(text.indexOf(keywords[k]) != -1) {
+                display = 'block';
+                break;
+            }
+        }
+        tables[i].style.display = display;
+    }
+}
+</script>
+</head>
+<body>
+<table class="container" align="center">
+<tr><td>Filter: <input type="text" id="filter" onkeyup="filter(this.value)"></td></tr>
+<tr><td>#rows#</td></tr>
+</table>
+</body>
+</html>

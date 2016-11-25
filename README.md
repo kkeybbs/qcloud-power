@@ -216,8 +216,8 @@ reader.readAsDataURL(file);
 // navigator.getUserMedia开启摄像头扫描二维码
 // 代码60多行，可以直接看http://t.ydjiao.com/qr/index.js，核心部分start_scan
 // 定时采集video到canvas，然后调用qrcode.decode尝试解析canvas
-
 ```
+
 **以上二维码生成、解析都是纯js、前端完成**
 短网址只能依赖后台做转换了，写个php调用api.t.sina.com.cn的api就好
 ### 效果
@@ -253,3 +253,26 @@ geocoder.getPoint(city, function(point) {
 ![按中心搜索周边多个位置](images/map.png)
 
 ## 5.XCode dmg / docset下载地址获取
+### 背景
+> * 从Mac上的App Store下载XCode太慢，而且无法和同事分享安装包
+> * 相关文档docset只能从XCode里面下载，太慢，也不方便分享
+> * 第三方下载**安全风险大** [XCodeGhost安全事件](https://security.tencent.com/index.php/blog/msg/96)
+
+### 思路
+> * 抓取XCode更新过程中，从Apple获取的下载地址，用工具下载
+
+### 实现
+跑起XCode，抓包看看，发现访问了https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex
+打开看看，大礼包都在
+> 这个文件是apple加的CFProperty，找了个php版本的解析工具CFPropertyList
+```
+$url = 'https://developer.apple.com/library/downloads/docset-index.dvtdownloadableindex';
+$xml = file_get_contents($url);
+$plist = new CFPropertyList\CFPropertyList();
+$plist->parse($xml);
+$docs = $plist->toArray();
+// 然后按友好的格式输出就行啦
+```
+
+### 效果
+![XCode下载地址获取](images/xcode.png)
